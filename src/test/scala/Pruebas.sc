@@ -38,11 +38,11 @@ val p = (x: Double) => (x*x + 3*x - 5) / (x + 1) // Función polinómica compues
 val q = (x: Double) => (x*x*x - 4*x + 2) / (x*x + 1) // Otra función polinómica con cociente
 val k = (x: Double) => math.sin(x) // Función trigonométrica seno
 val l = (x: Double) => math.cos(x) // Función trigonométrica coseno
-val trigComp = (x: Double) => math.sin(x) / (x + 1) // Función trigonométrica con división
+val tc = (x: Double) => math.sin(x) / (x + 1) // Función trigonométrica con división
 val m = (x: Double) => math.log(x) // Función logarítmica
 val n = (x: Double) => math.sqrt(x) // Función de raíz cuadrada
-val logComp = (x: Double) => math.log(x*x + 1) // Función logarítmica compuesta
-val sqrtComp = (x: Double) => math.sqrt(x*x + x + 1) // Función de raíz cuadrada compuesta
+val lc = (x: Double) => math.log(x*x + 1) // Función logarítmica compuesta
+val sc = (x: Double) => math.sqrt(x*x + x + 1) // Función de raíz cuadrada compuesta
 
 // Aplicación de derivadas
 val df = derivada(f)
@@ -53,11 +53,11 @@ val dh = derivada(h)
 val dj = derivada(j)
 val dk = derivada(k)
 val dl = derivada(l)
-val dTrigComp = derivada(trigComp)
+val dtc = derivada(tc)
 val dm = derivada(m)
 val dn = derivada(n)
-val dLogComp = derivada(logComp)
-val dSqrtComp = derivada(sqrtComp)
+val dlc = derivada(lc)
+val dsc = derivada(sc)
 
 // Evaluación en puntos clave
 df(2)  // Valor esperado: 4
@@ -68,11 +68,11 @@ dh(2)  // Valor esperado: -0.25
 dj(2)  // Valor esperado: 1
 dk(math.Pi/4)  // Valor esperado: cos(π/4) ≈ 0.7071
 dl(math.Pi/4)  // Valor esperado: -sin(π/4) ≈ -0.7071
-dTrigComp(1)  // Valor esperado: (cos(1)(2) - sen(1))/ (2^2) ≈ 0.05978
+dtc(1)  // Valor esperado: (cos(1)(2) - sen(1))/ (2^2) ≈ 0.05978
 dm(math.E)  // Valor esperado: 1/E ≈ 0.3679
 dn(4)  // Valor esperado: 1/4 = 0.25
-dLogComp(2)  // (ln(x)) Valor esperado: 0.8
-dSqrtComp(3)  // Valor esperado:  ≈ 0.9707
+dlc(2)  // (ln(x)) Valor esperado: 0.8
+dsc(3)  // Valor esperado:  ≈ 0.9707
 
 // Operaciones entre derivadas
 val mult1 = derivadaMult(f, g)
@@ -80,8 +80,8 @@ val div1 = derivadaDiv(f, g)
 val div2 = derivadaDiv(g, f)
 val sum2 = derivadaSuma(m, n)
 val rest2 = derivadaResta(m, n)
-val sum3 = derivadaSuma(logComp, sqrtComp)
-val rest3 = derivadaResta(logComp, sqrtComp)
+val sum3 = derivadaSuma(lc, sc)
+val rest3 = derivadaResta(lc, sc)
 
 derivadaDiv(f,(x)=> 0.0)(2) // caso  g(x) = 0 valor esperado: indefinido, no es un numero.
 
@@ -91,6 +91,6 @@ div1(2)  // Valor esperado: -0.25
 div2(2)  // Valor esperado: 1
 sum2(math.E)  // Valor esperado: 1/E + 1/(2√E) ≈ 0.67
 rest2(2)  // Valor esperado: 0.14
-rest2(4)  // Valor esperado: 0
+rest2(4)  // Valor esperado: 0  el retorno no es 0 sino que es un valor muy pequeño debido la aproximación.
 sum3(3)  // Valor esperado: 1.5707
 rest3(3)  // Valor esperado: -0.37
