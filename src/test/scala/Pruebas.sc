@@ -83,6 +83,8 @@ val rest2 = derivadaResta(m, n)
 val sum3 = derivadaSuma(logComp, sqrtComp)
 val rest3 = derivadaResta(logComp, sqrtComp)
 
+derivadaDiv(f,(x)=> 0.0)(2) // caso  g(x) = 0 valor esperado: indefinido, no es un numero.
+
 // Evaluación de operaciones
 mult1(2)  // Valor esperado: 80
 div1(2)  // Valor esperado: -0.25
